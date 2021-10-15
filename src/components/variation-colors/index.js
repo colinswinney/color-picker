@@ -1,9 +1,11 @@
 import "./styles/variation-colors.css"
+import { hslToHex, hslToRgb, round } from "../../helpers";
+import Clipboard from "react-clipboard.js";
 
 function VariationColors({name, hue, saturation, lightness}) {
 
     const numberOfVariations = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
+    
     function findNewShade(l, degree) {
         const diff = l;
         const diffStep = diff / 10;
@@ -24,29 +26,105 @@ function VariationColors({name, hue, saturation, lightness}) {
         return `hsl(${hue}, ${saturation}%, ${newL}%)`;
     }
 
+    function findNewShadeTintLightness(l, degree, shade = false, tint = false) {
+        let diff;
+        let newLightness;
+        if (shade) {
+            diff = l
+        } else if (tint) {
+            diff = 100 - Number(l)
+        }
+
+        const diffStep = Number(diff) / 10
+        let diffAmt = Number(diffStep) * Number(degree)
+        
+        if (shade) {
+            newLightness = Number(l) - Number(diffAmt)
+        } else if (tint) {
+            newLightness = Number(l) + Number(diffAmt)
+        }
+
+        return round(newLightness, 2);
+    }
+
     function returnBasedOnName(name, lightness, n) {
         if (name === "Shades") {
-            return findNewShade(lightness, n)
+            return findNewShadeTintLightness(lightness, n, true, false);
         }
         else if (name === "Tints") {
-            return findNewTint(lightness, n)
+            return findNewShadeTintLightness(lightness, n, false, true);
         }
     }
 
     return (
 			<>
 				<h2 className="title">{name}</h2>
-				<div className="color-grid">
+				<div>
 					{numberOfVariations.map((n) => (
-						<div key={n} className="color-cell">
+						<div key={n}>
 							<div
-                                className="color-cell-top"
 								style={{
 									height: 100 + "px",
-									backgroundColor: returnBasedOnName(name, lightness, n),
+                                    width: 300 + "px",
+                                    margin: "auto",
+									backgroundColor: `hsl(${hue}, ${saturation}%, ${returnBasedOnName(
+										name,
+										lightness,
+										n
+									)}%)`,
 								}}
 							></div>
-							<p>{returnBasedOnName(name, lightness, n)}</p>
+							<p
+								id={`hsl-${n}`}
+							>{`hsl(${hue}, ${saturation}%, ${returnBasedOnName(
+								name,
+								lightness,
+								n
+							)}%)`}</p>
+							<Clipboard
+								data-clipboard-target={`#hsl-${n}`}
+								button-title={`hsl(${hue}, ${saturation}%, ${returnBasedOnName(
+									name,
+									lightness,
+									n
+								)}%)`}
+							>
+								Copy HSL
+							</Clipboard>
+							<p id={`hex-${n}`}>
+								{hslToHex(
+									hue,
+									saturation,
+									returnBasedOnName(name, lightness, n)
+								)}
+							</p>
+							<Clipboard
+								data-clipboard-target={`#hex-${n}`}
+								button-title={hslToHex(
+									hue,
+									saturation,
+									returnBasedOnName(name, lightness, n)
+								)}
+							>
+								Copy HEX
+							</Clipboard>
+							<p id={`rgb-${n}`}>
+								{hslToRgb(
+									hue,
+									saturation,
+									returnBasedOnName(name, lightness, n)
+								)}
+							</p>
+							<Clipboard
+								data-clipboard-target={`#rgb-${n}`}
+								button-title={hslToRgb(
+									hue,
+									saturation,
+									returnBasedOnName(name, lightness, n)
+								)}
+							>
+								Copy RGB
+							</Clipboard>
 						</div>
 					))}
 				</div>

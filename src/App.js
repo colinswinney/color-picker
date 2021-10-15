@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
-import Clipboard from "react-clipboard.js"
 import "./App.css"
+import { hslToHex, hslToRgb } from "./helpers";
+import Header from "./components/header";
 import SliderInput from "./components/slider-input"
 import ButtonGroup from "./components/button-group";
 import VariationColors from "./components/variation-colors";
@@ -75,10 +76,14 @@ function App() {
   return (
 		<div className="app">
 
+      <Header></Header>
+
 			<div style={style}>
       </div>
 
-			<h1>{color}</h1>
+			<h2>{color}</h2>
+      <h2>{hslToHex(hue, saturation, lightness)}</h2>
+      <h2>{hslToRgb(hue, saturation, lightness)}</h2>
 
 			<form>
 				<SliderInput

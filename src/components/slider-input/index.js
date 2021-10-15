@@ -1,4 +1,4 @@
-function SliderInput ({ name, label, max, value, onSliderChange }) {
+function SliderInput ({ name, max, value, onSliderChange }) {
 
 	function createLabel(name, value) {
 		if (name === "hue") {

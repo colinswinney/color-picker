@@ -2,7 +2,7 @@
   padding: 0 0 2rem;
   min-height: 100vh;
   text-align: center;
-  background-color: hsl(0, 0%, 7%);
+  background: linear-gradient(90deg, hsl(0, 0%, 7%), hsl(0, 0%, 28%));
   color: hsl(0, 0%, 98%);
 }
 
@@ -29,6 +29,7 @@ input {
 
 button {
   padding: 0.5rem 1.5rem;
+  margin: 0 0.5rem;
   background-color: hsl(213, 99%, 39%);
   color: hsl(0, 0%, 98%);
   font-weight: 900;
@@ -40,6 +41,6 @@ button:hover {
   background-color: hsl(213, 99%, 24%);
 }
 
-button ~ button {
+/* button ~ button {
   margin-left: 1.5rem;
-}
+} */
