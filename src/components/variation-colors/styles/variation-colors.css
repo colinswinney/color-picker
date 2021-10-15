@@ -25,6 +25,7 @@
 .color-grid-text-block p {
     cursor: pointer;
     white-space: nowrap;
+    transition: 0.3s;
 }
 
 .color-grid-text-block p:hover {
