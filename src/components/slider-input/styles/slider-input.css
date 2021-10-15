@@ -1,0 +1,20 @@
+.slider-group {
+    display: flex;
+    justify-content: center;
+}
+
+.slider-label {
+  font-weight: 700;
+  width: 75px;
+  text-align: left;
+}
+
+.slider-label ~ .slider-label {
+  margin-top: 3rem;
+}
+
+.slider-input {
+  margin: 0;
+  flex: 1;
+  max-width: 360px;
+}

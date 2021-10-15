@@ -1,9 +1,7 @@
 import { useState, useEffect } from "react"
 import "./App.css"
-import { hslToHex, hslToRgb } from "./helpers";
 import Header from "./components/header";
 import SliderInput from "./components/slider-input"
-import ButtonGroup from "./components/button-group";
 import VariationColors from "./components/variation-colors";
 
 function App() {
@@ -41,7 +39,7 @@ function App() {
     if (savedColor) {
       return JSON.parse(savedColor)
     } else {
-      return `hsl( ${hue}, ${saturation}%, ${lightness}%)`;
+      return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
     }
   });
 
@@ -54,80 +52,66 @@ function App() {
 
   function handleHueChange(e) {
     setHue(e.target.value)
-    setColor(`hsl( ${e.target.value}, ${saturation}%, ${lightness}%)`);
+    setColor(`hsl(${e.target.value}, ${saturation}%, ${lightness}%)`);
   }
 
   function handleSaturationChange(e) {
 		setSaturation(e.target.value);
-    setColor(`hsl( ${hue}, ${e.target.value}%, ${lightness}%)`);
+    setColor(`hsl(${hue}, ${e.target.value}%, ${lightness}%)`);
 	}
 
   function handleLightnessChange(e) {
 		setLightness(e.target.value);
-    setColor(`hsl( ${hue}, ${saturation}%, ${e.target.value}%)`);
+    setColor(`hsl(${hue}, ${saturation}%, ${e.target.value}%)`);
 	}
-
-  const style = {
-		backgroundColor: color,
-		width: "100%",
-		height: "50vh",
-	};
 
   return (
 		<div className="app">
+			<div className="container">
+				<Header
+					color={color}
+					hue={hue}
+					saturation={saturation}
+					lightness={lightness}
+				>
+					<SliderInput
+						name="hue"
+						max="360"
+						value={hue}
+						onSliderChange={handleHueChange}
+					/>
 
-      <Header></Header>
+					<SliderInput
+						name="saturation"
+						max="100"
+						value={saturation}
+						onSliderChange={handleSaturationChange}
+					/>
 
-			<div style={style}>
-      </div>
+					<SliderInput
+						name="lightness"
+						max="100"
+						value={lightness}
+						onSliderChange={handleLightnessChange}
+					/>
+				</Header>
 
-			<h2>{color}</h2>
-      <h2>{hslToHex(hue, saturation, lightness)}</h2>
-      <h2>{hslToRgb(hue, saturation, lightness)}</h2>
+				<main>
+					<VariationColors
+						name="Shades"
+						hue={hue}
+						saturation={saturation}
+						lightness={lightness}
+					/>
 
-			<form>
-				<SliderInput
-					name="hue"
-					max="360"
-					value={hue}
-					onSliderChange={handleHueChange}
-				/>
-
-				<SliderInput
-					name="saturation"
-					max="100"
-					value={saturation}
-					onSliderChange={handleSaturationChange}
-				/>
-
-				<SliderInput
-					name="lightness"
-					max="100"
-					value={lightness}
-					onSliderChange={handleLightnessChange}
-				/>
-			</form>
-
-			<ButtonGroup
-				color={color}
-				hue={hue}
-				saturation={saturation}
-				lightness={lightness}
-			/>
-
-			<VariationColors
-				name="Shades"
-				hue={hue}
-				saturation={saturation}
-				lightness={lightness}
-			/>
-
-			<VariationColors
-				name="Tints"
-				hue={hue}
-				saturation={saturation}
-				lightness={lightness}
-			/>
+					<VariationColors
+						name="Tints"
+						hue={hue}
+						saturation={saturation}
+						lightness={lightness}
+					/>
+				</main>
+			</div>
 		</div>
 	);
 }

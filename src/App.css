@@ -1,46 +1,61 @@
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:500,700');
+
+html {font-size: 100%;} /*16px*/
+
+body {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 500;
+  line-height: 1.75;
+}
+
+p {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 3rem 0 1.38rem;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 700;
+  line-height: 1.3;
+  color: hsl(0, 0%, 99%);
+}
+
+h1 {
+  margin: 0;
+  font-size: 2.488rem;
+}
+
+h2 {font-size: 2.074rem;}
+
+h3 {font-size: 1.728rem;}
+
+h4 {font-size: 1.44rem;}
+
+h5 {font-size: 1.2rem;}
+
+small, .text_small {font-size: 0.833rem;}
+
 .app {
-  padding: 0 0 2rem;
+  padding: 3rem 1rem 1rem;
   min-height: 100vh;
-  text-align: center;
-  background: linear-gradient(90deg, hsl(0, 0%, 7%), hsl(0, 0%, 28%));
-  color: hsl(0, 0%, 98%);
+  background: hsl(300, 5%, 10%);
+  color: hsl(0, 0%, 70%);
 }
 
-form {
-  margin: 4rem auto;
-  display: flex;
-  flex-direction: column;
-}
-
-label {
-  margin-bottom: 1rem;
-  font-weight: 900;
-}
-
-label ~ label {
-  margin-top: 3rem;
-}
-
-input {
+.container {
   margin: auto;
   width: 100%;
-  max-width: 360px;
+  max-width: 1000px;
 }
 
-button {
-  padding: 0.5rem 1.5rem;
-  margin: 0 0.5rem;
-  background-color: hsl(213, 99%, 39%);
-  color: hsl(0, 0%, 98%);
-  font-weight: 900;
-  border: none;
-  cursor: pointer;
+main {
+  text-align: center;
+  display: grid;
+  grid-template-columns: auto;
 }
 
-button:hover {
-  background-color: hsl(213, 99%, 24%);
+@media (min-width: 768px) {
+  main {
+    grid-template-columns: auto auto;
+  }
 }
-
-/* button ~ button {
-  margin-left: 1.5rem;
-} */

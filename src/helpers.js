@@ -51,7 +51,7 @@ export function hslToRgb(h, s, l) {
 	g = Math.round((g + m) * 255);
 	b = Math.round((b + m) * 255);
 
-	return "rgb(" + r + "," + g + "," + b + ")";
+	return "rgb(" + r + ", " + g + ", " + b + ")";
 }
 
 export function round(value, decimals) {

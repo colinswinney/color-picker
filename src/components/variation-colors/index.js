@@ -4,27 +4,7 @@ import Clipboard from "react-clipboard.js";
 
 function VariationColors({name, hue, saturation, lightness}) {
 
-    const numberOfVariations = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    
-    function findNewShade(l, degree) {
-        const diff = l;
-        const diffStep = diff / 10;
-        let shadeToSubtract = diffStep * degree;
-        shadeToSubtract = Math.round(shadeToSubtract);
-        const newL = Number(l) - shadeToSubtract;
-
-        return `hsl(${hue}, ${saturation}%, ${newL}%)`;
-    }
-
-    function findNewTint(l, degree) {
-        const diff = 100 - l;
-        const diffStep = diff / 10;
-        let tintToAdd = diffStep * degree;
-        tintToAdd = Math.round(tintToAdd);
-        const newL = Number(l) + tintToAdd;
-
-        return `hsl(${hue}, ${saturation}%, ${newL}%)`;
-    }
+    const numberOfVariations = Array.from({ length: 10 }, (_, i) => i + 1);
 
     function findNewShadeTintLightness(l, degree, shade = false, tint = false) {
         let diff;
@@ -57,16 +37,14 @@ function VariationColors({name, hue, saturation, lightness}) {
     }
 
     return (
-			<>
+			<div>
 				<h2 className="title">{name}</h2>
-				<div>
+				<div className="color-grid">
 					{numberOfVariations.map((n) => (
-						<div key={n}>
+						<div key={n} className="color-grid-cell">
 							<div
+								className="color-grid-swatch"
 								style={{
-									height: 100 + "px",
-                                    width: 300 + "px",
-                                    margin: "auto",
 									backgroundColor: `hsl(${hue}, ${saturation}%, ${returnBasedOnName(
 										name,
 										lightness,
@@ -74,61 +52,71 @@ function VariationColors({name, hue, saturation, lightness}) {
 									)}%)`,
 								}}
 							></div>
-							<p
-								id={`hsl-${n}`}
-							>{`hsl(${hue}, ${saturation}%, ${returnBasedOnName(
-								name,
-								lightness,
-								n
-							)}%)`}</p>
-							<Clipboard
-								data-clipboard-target={`#hsl-${n}`}
-								button-title={`hsl(${hue}, ${saturation}%, ${returnBasedOnName(
-									name,
-									lightness,
-									n
-								)}%)`}
-							>
-								Copy HSL
-							</Clipboard>
-							<p id={`hex-${n}`}>
-								{hslToHex(
-									hue,
-									saturation,
-									returnBasedOnName(name, lightness, n)
-								)}
-							</p>
-							<Clipboard
-								data-clipboard-target={`#hex-${n}`}
-								button-title={hslToHex(
-									hue,
-									saturation,
-									returnBasedOnName(name, lightness, n)
-								)}
-							>
-								Copy HEX
-							</Clipboard>
-							<p id={`rgb-${n}`}>
-								{hslToRgb(
-									hue,
-									saturation,
-									returnBasedOnName(name, lightness, n)
-								)}
-							</p>
-							<Clipboard
-								data-clipboard-target={`#rgb-${n}`}
-								button-title={hslToRgb(
-									hue,
-									saturation,
-									returnBasedOnName(name, lightness, n)
-								)}
-							>
-								Copy RGB
-							</Clipboard>
+							<div className="color-grid-text-block">
+								<Clipboard
+									component="p"
+									data-clipboard-text={`hsl(${hue}, ${saturation}%, ${returnBasedOnName(
+										name,
+										lightness,
+										n
+									)}%)`}
+									button-title={`Copy ${`hsl(${hue}, ${saturation}%, ${returnBasedOnName(
+										name,
+										lightness,
+										n
+									)}%)`}`}
+								>
+									{`hsl(${hue}, ${saturation}%, ${returnBasedOnName(
+										name,
+										lightness,
+										n
+									)}%)`}
+								</Clipboard>
+								<br />
+								<Clipboard
+									component="p"
+									data-clipboard-text={hslToHex(
+										hue,
+										saturation,
+										returnBasedOnName(name, lightness, n)
+									)}
+									button-title={`Copy ${hslToHex(
+										hue,
+										saturation,
+										returnBasedOnName(name, lightness, n)
+									)}`}
+								>
+									{hslToHex(
+										hue,
+										saturation,
+										returnBasedOnName(name, lightness, n)
+									)}
+								</Clipboard>
+								<br />
+								<Clipboard
+									component="p"
+									data-clipboard-text={hslToRgb(
+										hue,
+										saturation,
+										returnBasedOnName(name, lightness, n)
+									)}
+									button-title={`Copy ${hslToRgb(
+										hue,
+										saturation,
+										returnBasedOnName(name, lightness, n)
+									)}`}
+								>
+									{hslToRgb(
+										hue,
+										saturation,
+										returnBasedOnName(name, lightness, n)
+									)}
+								</Clipboard>
+							</div>
 						</div>
 					))}
 				</div>
-			</>
+			</div>
 		);
 }
 
