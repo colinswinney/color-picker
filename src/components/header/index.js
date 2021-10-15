@@ -15,29 +15,35 @@ function Header({ color, hue, saturation, lightness, children }) {
 			{children}
 
 			<div className="text-block">
-				<Clipboard
-					component="p"
-					data-clipboard-text={color}
-					button-title={`Copy ${color}`}
-				>
-					{color}
-				</Clipboard>
+				<p>
+					<Clipboard
+						component="span"
+						data-clipboard-text={color}
+						button-title={`Copy ${color}`}
+					>
+						{color}
+					</Clipboard>
+				</p>
 				<br />
-				<Clipboard
-					component="p"
-					data-clipboard-text={hslToHex(hue, saturation, lightness)}
-					button-title={`Copy ${hslToHex(hue, saturation, lightness)}`}
-				>
-					{hslToHex(hue, saturation, lightness)}
-				</Clipboard>
+				<p>
+					<Clipboard
+						component="span"
+						data-clipboard-text={hslToHex(hue, saturation, lightness)}
+						button-title={`Copy ${hslToHex(hue, saturation, lightness)}`}
+					>
+						{hslToHex(hue, saturation, lightness)}
+					</Clipboard>
+				</p>
 				<br />
-				<Clipboard
-					component="p"
-					data-clipboard-text={hslToRgb(hue, saturation, lightness)}
-					button-title={`Copy ${hslToRgb(hue, saturation, lightness)}`}
-				>
-					{hslToRgb(hue, saturation, lightness)}
-				</Clipboard>
+				<p>
+					<Clipboard
+						component="span"
+						data-clipboard-text={hslToRgb(hue, saturation, lightness)}
+						button-title={`Copy ${hslToRgb(hue, saturation, lightness)}`}
+					>
+						{hslToRgb(hue, saturation, lightness)}
+					</Clipboard>
+				</p>
 			</div>
 		</header>
 	);

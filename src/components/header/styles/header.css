@@ -2,8 +2,13 @@
     text-align: center;
 }
 
+.title {
+    line-height: 1.2;
+}
+
 .subtitle {
     margin: 1rem auto 2rem;
+    line-height: 1.2;
 }
 
 .color-window {
@@ -19,14 +24,14 @@
     gap: 1rem;
 }
 
-.text-block p {
+.text-block p span {
     margin: 0;
     text-align: center;
     white-space: nowrap;
     transition: 0.3s;
 }
 
-.text-block p:hover {
+.text-block p span:hover {
     cursor: pointer;
-    color: white;
+    color: hsl(0, 0%, 99%);
 }

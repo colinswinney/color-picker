@@ -22,14 +22,14 @@
     text-align: left;
 }
 
-.color-grid-text-block p {
+.color-grid-text-block p span{
     cursor: pointer;
     white-space: nowrap;
     transition: 0.3s;
 }
 
-.color-grid-text-block p:hover {
-    color: white;
+.color-grid-text-block p span:hover {
+    color: hsl(0, 0%, 99%);
 }
 
 .color-grid-swatch {
