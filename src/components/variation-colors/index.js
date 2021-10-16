@@ -1,6 +1,6 @@
 import "./styles/variation-colors.css"
 import { hslToHex, hslToRgb, round } from "../../helpers";
-import Clipboard from "react-clipboard.js";
+import TextToCopy from "../text-to-copy";
 
 function VariationColors({name, hue, saturation, lightness}) {
 
@@ -54,36 +54,32 @@ function VariationColors({name, hue, saturation, lightness}) {
 							></div>
 							<div className="color-grid-text-block">
 								<p>
-									<Clipboard
-										component="span"
-										data-clipboard-text={`hsl(${hue}, ${saturation}%, ${returnBasedOnName(
+									<TextToCopy
+										clipboardText={`hsl(${hue}, ${saturation}%, ${returnBasedOnName(
 											name,
 											lightness,
 											n
 										)}%)`}
-										button-title={`Copy ${`hsl(${hue}, ${saturation}%, ${returnBasedOnName(
+										btnTitle={`Copy ${`hsl(${hue}, ${saturation}%, ${returnBasedOnName(
 											name,
 											lightness,
 											n
 										)}%)`}`}
-									>
-										{`hsl(${hue}, ${saturation}%, ${returnBasedOnName(
-											name,
-											lightness,
-											n
-										)}%)`}
-									</Clipboard>
+									>{`hsl(${hue}, ${saturation}%, ${returnBasedOnName(
+										name,
+										lightness,
+										n
+									)}%)`}</TextToCopy>
 								</p>
 								<br />
 								<p>
-									<Clipboard
-										component="span"
-										data-clipboard-text={hslToHex(
+									<TextToCopy
+										clipboardText={hslToHex(
 											hue,
 											saturation,
 											returnBasedOnName(name, lightness, n)
 										)}
-										button-title={`Copy ${hslToHex(
+										btnTitle={`Copy ${hslToHex(
 											hue,
 											saturation,
 											returnBasedOnName(name, lightness, n)
@@ -94,18 +90,17 @@ function VariationColors({name, hue, saturation, lightness}) {
 											saturation,
 											returnBasedOnName(name, lightness, n)
 										)}
-									</Clipboard>
+									</TextToCopy>
 								</p>
 								<br />
 								<p>
-									<Clipboard
-										component="span"
-										data-clipboard-text={hslToRgb(
+									<TextToCopy
+										clipboardText={hslToRgb(
 											hue,
 											saturation,
 											returnBasedOnName(name, lightness, n)
 										)}
-										button-title={`Copy ${hslToRgb(
+										btnTitle={`Copy ${hslToRgb(
 											hue,
 											saturation,
 											returnBasedOnName(name, lightness, n)
@@ -116,7 +111,7 @@ function VariationColors({name, hue, saturation, lightness}) {
 											saturation,
 											returnBasedOnName(name, lightness, n)
 										)}
-									</Clipboard>
+									</TextToCopy>
 								</p>
 							</div>
 						</div>

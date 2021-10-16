@@ -15,7 +15,7 @@ function SliderInput ({ name, max, value, onSliderChange }) {
 	}
 
 	return (
-		<div className="slider-group">
+		<div className="slider">
 			<label className="slider-label" htmlFor={name}>{createLabel(name, value)}</label>
 			<input
 				className="slider-input"

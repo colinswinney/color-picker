@@ -1,13 +1,13 @@
 import { hslToHex, hslToRgb } from "../../helpers";
 import "./styles/header.css"
-import Clipboard from "react-clipboard.js";
+import TextToCopy from "../text-to-copy";
 
 function Header({ color, hue, saturation, lightness, children }) {
 
 	return (
 		<header className="header">
-			<h1 class="title">HSL Color Picker</h1>
-			<p class="subtitle">
+			<h1 className="title">HSL Color Picker</h1>
+			<p className="subtitle">
 				Click on any HSL, HEX, or RGB value to copy to your clipboard!
 			</p>
 			<div className="color-window" style={{ backgroundColor: color }}></div>
@@ -16,33 +16,25 @@ function Header({ color, hue, saturation, lightness, children }) {
 
 			<div className="text-block">
 				<p>
-					<Clipboard
-						component="span"
-						data-clipboard-text={color}
-						button-title={`Copy ${color}`}
-					>
+					<TextToCopy clipboardText={color} btnTitle={`Copy ${color}`}>
 						{color}
-					</Clipboard>
+					</TextToCopy>
 				</p>
-				<br />
 				<p>
-					<Clipboard
-						component="span"
-						data-clipboard-text={hslToHex(hue, saturation, lightness)}
-						button-title={`Copy ${hslToHex(hue, saturation, lightness)}`}
+					<TextToCopy
+						clipboardText={hslToHex(hue, saturation, lightness)}
+						btnTitle={`Copy ${hslToHex(hue, saturation, lightness)}`}
 					>
 						{hslToHex(hue, saturation, lightness)}
-					</Clipboard>
+					</TextToCopy>
 				</p>
-				<br />
 				<p>
-					<Clipboard
-						component="span"
-						data-clipboard-text={hslToRgb(hue, saturation, lightness)}
-						button-title={`Copy ${hslToRgb(hue, saturation, lightness)}`}
+					<TextToCopy
+						clipboardText={hslToRgb(hue, saturation, lightness)}
+						btnTitle={`Copy ${hslToRgb(hue, saturation, lightness)}`}
 					>
 						{hslToRgb(hue, saturation, lightness)}
-					</Clipboard>
+					</TextToCopy>
 				</p>
 			</div>
 		</header>

@@ -19,19 +19,8 @@
 
 .text-block {
     margin: 2rem auto;
-    display: inline-grid;
-    grid-template-columns: min-content min-content;
-    gap: 1rem;
 }
 
-.text-block p span {
-    margin: 0;
-    text-align: center;
-    white-space: nowrap;
-    transition: 0.3s;
-}
-
-.text-block p span:hover {
-    cursor: pointer;
-    color: hsl(0, 0%, 99%);
+.text-block p {
+    margin-bottom: 1rem;
 }
