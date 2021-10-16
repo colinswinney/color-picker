@@ -6,7 +6,7 @@ class TextToCopy extends Component {
 		super(props);
 		this.onSuccess = this.onSuccess.bind(this);
         this.state = { 
-            text: this.props.children,
+            success: false,
             successClass: ""
         };
 	}
@@ -14,12 +14,12 @@ class TextToCopy extends Component {
 	onSuccess() {
 		console.info("successfully copied");
         this.setState({ 
-            text: "Copied!",
+            success: true,
             successClass: "success"
         });
         setTimeout(() => {
             this.setState({
-                text: this.props.children,
+                success: false,
                 successClass: "",
             });
         }, 1500);
@@ -34,7 +34,7 @@ class TextToCopy extends Component {
 				onSuccess={this.onSuccess}
                 className={`color-name ${this.state.successClass}`}
 			>
-				{this.state.text}
+				{this.state.success ? "Copied!" : this.props.children}
 			</Clipboard>
 		);
 	}
