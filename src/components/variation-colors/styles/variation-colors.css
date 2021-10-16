@@ -4,6 +4,7 @@
 
 .color-grid {
     margin: auto;
+    min-width: 325px;
     display: inline-grid;
     grid-template-columns: auto;
 }
