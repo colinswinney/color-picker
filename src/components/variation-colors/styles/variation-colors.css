@@ -1,12 +1,17 @@
 .title {
-  text-align: center;
+  margin: 1rem 0;
 }
 
 .color-grid {
     margin: auto;
-    min-width: 325px;
     display: inline-grid;
     grid-template-columns: auto;
+}
+
+@media (min-width: 375px) {
+    .color-grid {
+        min-width: 325px;
+    }
 }
 
 .color-grid-cell {

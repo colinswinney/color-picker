@@ -37,7 +37,7 @@ function VariationColors({name, hue, saturation, lightness}) {
     }
 
     return (
-			<div>
+			<section>
 				<h2 className="title">{name}</h2>
 				<div className="color-grid">
 					{numberOfVariations.map((n) => (
@@ -69,7 +69,8 @@ function VariationColors({name, hue, saturation, lightness}) {
 										name,
 										lightness,
 										n
-									)}%)`}</TextToCopy>
+									)}%)`}
+									</TextToCopy>
 								</p>
 								<br />
 								<p>
@@ -117,7 +118,7 @@ function VariationColors({name, hue, saturation, lightness}) {
 						</div>
 					))}
 				</div>
-			</div>
+			</section>
 		);
 }
 

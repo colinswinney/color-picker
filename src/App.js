@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react"
 import "./App.css"
 import Header from "./components/header";
+import Previews from "./components/previews";
 import Footer from "./components/footer";
 import SliderInput from "./components/slider-input"
 import VariationColors from "./components/variation-colors";
@@ -112,7 +113,8 @@ function App() {
 						lightness={lightness}
 					/>
 				</main>
-        <Footer />
+				<Previews color={color}/>
+				<Footer />
 			</div>
 		</div>
 	);

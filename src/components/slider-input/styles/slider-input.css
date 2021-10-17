@@ -1,10 +1,5 @@
-.slider {
-    display: flex;
-    justify-content: center;
-}
-
 .slider ~ .slider {
-   margin-top: 0.75rem;
+   margin-top: 1rem;
 }
 
 .slider-label {
@@ -19,7 +14,16 @@
   max-width: 360px;
 }
 
+@media (min-width: 400px) {
+  .slider {
+      display: flex;
+      justify-content: center;
+  }
 
+  .slider ~ .slider {
+    margin-top: 0.75rem;
+  }
+}
 
 input[type=range] {
   box-sizing: border-box;
