@@ -14,13 +14,12 @@ function Previews({color}) {
     const dark = "hsl(0, 0%, 7%)"
 
     return (
-			<aside>
+			<section id="Preview">
 				<h2 class="title">Preview</h2>
 				<p>View your selection against light and dark text or backgrounds.</p>
-				<small>Light = hsl(0, 0%, 99%)<br/>Dark = hsl(0, 0%, 7%)</small>
-				<br />
+				{/* <small>Light = hsl(0, 0%, 99%) Dark = hsl(0, 0%, 7%)</small> */}
 				<label htmlFor="heading" className="text-label">
-					Heading
+					Heading:
 				</label>
 				<input
 					className="text-input"
@@ -64,7 +63,7 @@ function Previews({color}) {
 						{/* <p className="description">Color Text on Dark Background</p> */}
 					</section>
 				</div>
-			</aside>
+			</section>
 		);
 }
 

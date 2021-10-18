@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import "./App.css"
+import Nav from "./components/nav";
 import Header from "./components/header";
 import Previews from "./components/previews";
 import Footer from "./components/footer";
@@ -68,8 +69,9 @@ function App() {
 	}
 
   return (
-		<div className="app">
+		<div className="app" id="App">
 			<div className="container">
+				<Nav color={color} />
 				<Header
 					color={color}
 					hue={hue}
@@ -112,9 +114,17 @@ function App() {
 						saturation={saturation}
 						lightness={lightness}
 					/>
+
+					<VariationColors
+						name="Harmonies"
+						hue={hue}
+						saturation={saturation}
+						lightness={lightness}
+					/>
+					<Previews color={color} />
 				</main>
-				<Previews color={color}/>
-				<Footer />
+
+				<Footer color={color} />
 			</div>
 		</div>
 	);

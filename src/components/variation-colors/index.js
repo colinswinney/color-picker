@@ -1,122 +1,125 @@
 import "./styles/variation-colors.css"
-import { hslToHex, hslToRgb, round } from "../../helpers";
-import TextToCopy from "../text-to-copy";
+import ColorCell from "../color-cell";
 
 function VariationColors({name, hue, saturation, lightness}) {
 
     const numberOfVariations = Array.from({ length: 10 }, (_, i) => i + 1);
 
-    function findNewShadeTintLightness(l, degree, shade = false, tint = false) {
-        let diff;
-        let newLightness;
-        if (shade) {
-            diff = l
-        } else if (tint) {
-            diff = 100 - Number(l)
-        }
+	function harmonyHue(hue, num) {
+		let newHue = Number(hue) + Number(num);
 
-        const diffStep = Number(diff) / 10
-        let diffAmt = Number(diffStep) * Number(degree)
-        
-        if (shade) {
-            newLightness = Number(l) - Number(diffAmt)
-        } else if (tint) {
-            newLightness = Number(l) + Number(diffAmt)
-        }
-
-        return round(newLightness, 2);
-    }
-
-    function returnBasedOnName(name, lightness, n) {
-        if (name === "Shades") {
-            return findNewShadeTintLightness(lightness, n, true, false);
-        }
-        else if (name === "Tints") {
-            return findNewShadeTintLightness(lightness, n, false, true);
-        }
-    }
+		if (newHue > 360) {
+			newHue = Number(newHue) - Number(360);
+		}
+		return newHue;
+	}
 
     return (
-			<section>
+			<section class="colors-section" id={name}>
 				<h2 className="title">{name}</h2>
-				<div className="color-grid">
-					{numberOfVariations.map((n) => (
-						<div key={n} className="color-grid-cell">
-							<div
-								className="color-grid-swatch"
-								style={{
-									backgroundColor: `hsl(${hue}, ${saturation}%, ${returnBasedOnName(
-										name,
-										lightness,
-										n
-									)}%)`,
-								}}
-							></div>
-							<div className="color-grid-text-block">
-								<p>
-									<TextToCopy
-										clipboardText={`hsl(${hue}, ${saturation}%, ${returnBasedOnName(
-											name,
-											lightness,
-											n
-										)}%)`}
-										btnTitle={`Copy ${`hsl(${hue}, ${saturation}%, ${returnBasedOnName(
-											name,
-											lightness,
-											n
-										)}%)`}`}
-									>{`hsl(${hue}, ${saturation}%, ${returnBasedOnName(
-										name,
-										lightness,
-										n
-									)}%)`}
-									</TextToCopy>
-								</p>
-								<br />
-								<p>
-									<TextToCopy
-										clipboardText={hslToHex(
-											hue,
-											saturation,
-											returnBasedOnName(name, lightness, n)
-										)}
-										btnTitle={`Copy ${hslToHex(
-											hue,
-											saturation,
-											returnBasedOnName(name, lightness, n)
-										)}`}
-									>
-										{hslToHex(
-											hue,
-											saturation,
-											returnBasedOnName(name, lightness, n)
-										)}
-									</TextToCopy>
-								</p>
-								<br />
-								<p>
-									<TextToCopy
-										clipboardText={hslToRgb(
-											hue,
-											saturation,
-											returnBasedOnName(name, lightness, n)
-										)}
-										btnTitle={`Copy ${hslToRgb(
-											hue,
-											saturation,
-											returnBasedOnName(name, lightness, n)
-										)}`}
-									>
-										{hslToRgb(
-											hue,
-											saturation,
-											returnBasedOnName(name, lightness, n)
-										)}
-									</TextToCopy>
-								</p>
-							</div>
-						</div>
-					))}
+				<div className="colors-container">
+					{name !== "Harmonies"
+						? numberOfVariations.map((n) => (
+								<ColorCell
+									key={n}
+									name={name}
+									n={n}
+									hue={hue}
+									saturation={saturation}
+									lightness={lightness}
+								/>
+								
+						  ))
+						:
+					""
+					}
+					{name === "Harmonies" 
+						? (
+						<>
+							<h4>Complimentary</h4>
+							<ColorCell
+								name={name}
+								hue={hue}
+								saturation={saturation}
+								lightness={lightness}
+							/>
+
+							<ColorCell
+								name={name}
+								hue={harmonyHue(hue, 180)}
+								saturation={saturation}
+								lightness={lightness}
+							/>
+
+							<h4>Analogous</h4>
+							<ColorCell
+								name={name}
+								hue={hue}
+								saturation={saturation}
+								lightness={lightness}
+							/>
+
+							<ColorCell
+								name={name}
+								hue={harmonyHue(hue, 30)}
+								saturation={saturation}
+								lightness={lightness}
+							/>
+
+							<ColorCell
+								name={name}
+								hue={harmonyHue(hue, 60)}
+								saturation={saturation}
+								lightness={lightness}
+							/>
+
+							<h4>Triadic</h4>
+							<ColorCell
+								name={name}
+								hue={hue}
+								saturation={saturation}
+								lightness={lightness}
+							/>
+
+							<ColorCell
+								name={name}
+								hue={harmonyHue(hue, 120)}
+								saturation={saturation}
+								lightness={lightness}
+							/>
+
+							<ColorCell
+								name={name}
+								hue={harmonyHue(hue, 240)}
+								saturation={saturation}
+								lightness={lightness}
+							/>
+
+							<h4>Split-Complimentary</h4>
+							<ColorCell
+								name={name}
+								hue={hue}
+								saturation={saturation}
+								lightness={lightness}
+							/>
+
+							<ColorCell
+								name={name}
+								hue={harmonyHue(hue, 150)}
+								saturation={saturation}
+								lightness={lightness}
+							/>
+
+							<ColorCell
+								name={name}
+								hue={harmonyHue(hue, 210)}
+								saturation={saturation}
+								lightness={lightness}
+							/>
+						</>
+					) : (
+						""
+					)}
 				</div>
 			</section>
 		);

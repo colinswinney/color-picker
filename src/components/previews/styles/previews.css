@@ -1,5 +1,6 @@
-aside {
-    margin: 4rem 0;
+#Preview {
+    padding-top: 3rem;
+    margin: 0;
 }
 
 .text-label,
@@ -11,6 +12,7 @@ aside {
 
 .text-label {
     margin-top: 1.5rem;
+    color:hsl(0, 0%, 99%);
 }
 
 .text-input {
@@ -23,6 +25,7 @@ aside {
     font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
     border: none;
     border-bottom: 2px solid hsl(0, 0%, 70%);
+    border-radius: 0;
     outline: none;
 }
 

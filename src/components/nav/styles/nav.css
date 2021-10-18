@@ -1,0 +1,38 @@
+.nav {
+    padding: 1rem;
+    background: hsl(300, 5%, 10%);
+    position: fixed;
+    inset: 0 0 auto 0;
+}
+
+.nav.scrolled {
+    border-bottom: 1px solid hsl(0, 0%, 50%);
+}
+
+.menu {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.menu-item {
+    margin-right: 2rem;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+}
+
+.menu-item:last-of-type {
+    margin-left: auto;
+}
+
+.menu-item .swatch {
+    display: inline-block;
+    margin-left: 0.5rem;
+    height: 2rem;
+    width: 2rem;
+}

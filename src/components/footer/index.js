@@ -1,10 +1,10 @@
 import "./styles/footer.css"
 
-function Footer() {
+function Footer({color}) {
     return (
 			<footer className="footer">
 				<small>
-					Created by <a href="https://colinswinney.com">Colin Swinney</a>
+					Created by <a style={{borderColor: color}} href="https://colinswinney.com">Colin Swinney</a>
 				</small>
 			</footer>
 		);
