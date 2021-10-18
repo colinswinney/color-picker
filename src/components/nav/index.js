@@ -16,19 +16,19 @@ function Nav({color}) {
 				<div className="container">
 					<ul class="menu">
 						<li className="menu-item">
-							<a href="/#App">HSL</a>
+							<a href="/hsl-color-picker/#App">HSL</a>
 						</li>
 						<li className="menu-item">
-							<a href="/#Shades">Shades</a>
+							<a href="/hsl-color-picker/#Shades">Shades</a>
 						</li>
 						<li className="menu-item">
-							<a href="/#Tints">Tints</a>
+							<a href="/hsl-color-picker/#Tints">Tints</a>
 						</li>
 						<li className="menu-item">
-							<a href="/#Harmonies">Harmonies</a>
+							<a href="/hsl-color-picker/#Harmonies">Harmonies</a>
 						</li>
 						<li className="menu-item">
-							<a href="/#Preview">Preview</a>
+							<a href="/hsl-color-picker/#Preview">Preview</a>
 						</li>
 						<li className="menu-item">
 							<TextToCopy clipboardText={color} btnTitle={`Copy: ${color}`}>
