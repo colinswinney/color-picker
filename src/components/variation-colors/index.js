@@ -28,13 +28,9 @@ function VariationColors({name, hue, saturation, lightness}) {
 									saturation={saturation}
 									lightness={lightness}
 								/>
-								
 						  ))
-						:
-					""
-					}
-					{name === "Harmonies" 
-						? (
+						: ""}
+					{name === "Harmonies" ? (
 						<>
 							<h4>Complimentary</h4>
 							<ColorCell
@@ -113,6 +109,64 @@ function VariationColors({name, hue, saturation, lightness}) {
 							<ColorCell
 								name={name}
 								hue={harmonyHue(hue, 210)}
+								saturation={saturation}
+								lightness={lightness}
+							/>
+
+							<h4>Square</h4>
+							<ColorCell
+								name={name}
+								hue={hue}
+								saturation={saturation}
+								lightness={lightness}
+							/>
+
+							<ColorCell
+								name={name}
+								hue={harmonyHue(hue, 90)}
+								saturation={saturation}
+								lightness={lightness}
+							/>
+
+							<ColorCell
+								name={name}
+								hue={harmonyHue(hue, 180)}
+								saturation={saturation}
+								lightness={lightness}
+							/>
+
+							<ColorCell
+								name={name}
+								hue={harmonyHue(hue, 270)}
+								saturation={saturation}
+								lightness={lightness}
+							/>
+
+							<h4>Rectangular</h4>
+							<ColorCell
+								name={name}
+								hue={hue}
+								saturation={saturation}
+								lightness={lightness}
+							/>
+
+							<ColorCell
+								name={name}
+								hue={harmonyHue(hue, 60)}
+								saturation={saturation}
+								lightness={lightness}
+							/>
+
+							<ColorCell
+								name={name}
+								hue={harmonyHue(hue, 180)}
+								saturation={saturation}
+								lightness={lightness}
+							/>
+
+							<ColorCell
+								name={name}
+								hue={harmonyHue(hue, 240)}
 								saturation={saturation}
 								lightness={lightness}
 							/>

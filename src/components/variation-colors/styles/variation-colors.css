@@ -3,10 +3,6 @@
     margin-top: -3rem;
 }
 
-.title {
-  margin: 4rem 0 1rem;
-}
-
 .colors-container {
     margin: auto;
     display: flex;
@@ -26,13 +22,13 @@
 .color-text-block {
     display: grid;
     grid-template-columns: 1fr min-content;
-    /* gap: 1rem; */
     text-align: center;
 }
 
 .color-swatch {
+    margin-bottom: 0.5rem;
     width: 100%;
-    min-width: 200px;
-    height: 150px;
+    min-width: 180px;
+    height: 120px;
     place-self: center;
 }

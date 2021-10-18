@@ -93,3 +93,7 @@ a:hover {
 .color-name:hover {
     cursor: pointer;
 }
+
+.title {
+  margin: 4rem 0 1rem;
+}

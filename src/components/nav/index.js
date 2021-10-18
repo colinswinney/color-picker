@@ -16,7 +16,7 @@ function Nav({color}) {
 				<div className="container">
 					<ul class="menu">
 						<li className="menu-item">
-							<a href="/hsl-color-picker/#App">HSL</a>
+							<a href="/hsl-color-picker/#HSL">HSL</a>
 						</li>
 						<li className="menu-item">
 							<a href="/hsl-color-picker/#Shades">Shades</a>
